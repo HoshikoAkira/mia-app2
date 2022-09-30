@@ -7,7 +7,8 @@ import Box from '@mui/material/Box';
 
 import Stack from '@mui/material/Stack';
 
-import DataGridDemo from "./nuovo"
+import DataGridDemo from "./domande"
+import DataGridSondaggi from './sondaggi';
 
 
 
@@ -24,7 +25,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -62,9 +63,10 @@ export default function BasicTabs() {
       </Box>
       <TabPanel value={value} index={0}>
 
-      <Stack spacing={2} direction="row">
-      <DataGridDemo/>
-      </Stack>
+        <Stack spacing={2} direction="row">
+        {/* <DataGridDemo/> */}
+        <DataGridSondaggi/>
+        </Stack>
 
       </TabPanel>
       <TabPanel value={value} index={1}>

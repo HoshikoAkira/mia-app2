@@ -1,33 +1,26 @@
-import React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { Button, createTheme} from '@mui/material'
-
-
-const UseStyle= createTheme(theme=>({
-offset : theme.mixins.toolbar
-}))
-
-
-const navbar = () => {
-  const classes = UseStyle()
+export default function ButtonAppBar() {
   return (
-    <div>
-        <AppBar position="fixed" color="primary" sx={{height:50}}>
-          <Toolbar>
-            <Typography variant="h8" >
-     
-            </Typography>
-            <Button variant="text" color="inherit">
-              Home
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <div className={classes.offset}></div>
-        </div>
-  )
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="fixed">
+        <Toolbar>
+       
+          <Typography variant="h6" component={"div"} sx={{ flexGrow: 0 }}>
+          <Button color="inherit" href="http://google.com">HOME</Button>
+          </Typography>
+          <Button color="inherit" href="./sondaggi.jsx">Sondaggi</Button>
+          <Button color="inherit" href='./domande.jsx'>Nuovo</Button>
+          <Button color="inherit">Analitycs</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
-
-export default navbar

@@ -1,5 +1,4 @@
-{
-    "domande": [
+[
         {
             "testo": "Quale cane ti piace tra i seguenti?",
             "tipologia": "risposta singola",
@@ -62,4 +61,3 @@
             ]
         }
     ]
-}

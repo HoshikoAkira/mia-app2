@@ -1,0 +1,103 @@
+[
+    {
+        "_id": "6334451ba32b4b1abad031e0",
+        "titolo": "Sondaggio da cani",
+        "sottotitolo": "Cosa ti piace di queste palle di pelo",
+        "descrizione": "L'obiettivo del sondaggio è quello di verificare quali specie di cani piacciono agli impiegati",
+        "dataInizio": "2022-09-27T22:00:00.000Z",
+        "dataFine": "2022-10-01T22:00:00.000Z",
+        "emailCreatore": "pippo@ti.it",
+        "emailDestinatari": [
+            {
+                "_id": "63356f08adf080d0d5fae2ba",
+                "email": "gpgp@ti.it"
+            },
+            {
+                "_id": "63356f08adf080d0d5fae2bb",
+                "email": "vgvg@ti.it"
+            },
+            {
+                "_id": "63356f08adf080d0d5fae2bc",
+                "email": "cscs@ti.it"
+            }
+        ],
+        "domande": [
+            {
+                "_id": "63356f08adf080d0d5fae2bd",
+                "testo": "Quale cane ti piace tra i seguenti?",
+                "tipologia": "risposta singola",
+                "indice": "0",
+                "risposte": [
+                    {
+                        "_id": "63356f08adf080d0d5fae2be",
+                        "risposta": "Golden retriever"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2bf",
+                        "risposta": "Chiwawa"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c0",
+                        "risposta": "Bulldog"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c1",
+                        "risposta": "Pastore tedesco"
+                    }
+                ]
+            },
+            {
+                "_id": "63356f08adf080d0d5fae2c2",
+                "testo": "Cosa ti piace di più del cane in questione?",
+                "tipologia": "Risposta aperta",
+                "indice": "1",
+                "risposte": [
+                    {
+                        "_id": "63356f08adf080d0d5fae2c3",
+                        "risposta": "Mi piace e basta."
+                    }
+                ]
+            },
+            {
+                "_id": "63356f08adf080d0d5fae2c4",
+                "testo": "Quanto è economico mantenere questo cane?",
+                "tipologia": "risposta singola",
+                "indice": "2",
+                "risposte": [
+                    {
+                        "_id": "63356f08adf080d0d5fae2c5",
+                        "risposta": "Carissimo"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c6",
+                        "risposta": "Caro"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c7",
+                        "risposta": "Nella media"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c8",
+                        "risposta": "Economico"
+                    },
+                    {
+                        "_id": "63356f08adf080d0d5fae2c9",
+                        "risposta": "Economicissimo"
+                    }
+                ]
+            },
+            {
+                "_id": "63356f08adf080d0d5fae2ca",
+                "testo": "Questa è una domanda vuota...",
+                "tipologia": "non ci sono risposte",
+                "indice": "3",
+                "risposte": [
+                    {
+                        "_id": "63356f08adf080d0d5fae2cb",
+                        "risposta": ""
+                    }
+                ]
+            }
+        ]
+    }
+]
