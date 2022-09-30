@@ -16,6 +16,7 @@ function App() {
   return (
     < >
     {/* //Collego gli elementi tramite id  */}
+    {/* //Collego gli elementi tramite id  */}
       <BrowserRouter>
         <Routes>
           <Route path="sondaggi/:id" element={<DataGridDemo />} />
