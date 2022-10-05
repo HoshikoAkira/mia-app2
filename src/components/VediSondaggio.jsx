@@ -6,49 +6,20 @@ import { Box } from '@mui/system';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 
 
 
 
-const RenderButton = (props) => {
-    const navigate=useNavigate();
-  
-     
-    return (
-       
-        <Button
-            onClick={() => {
-              
-                //Al click il bottone mi rimanda al sondaggio
-                navigate("/VediSondaggi/" + props.riga.id );
-                 
-            }}
-          
-            component="button"
-            variant="text"
-            size="small"
-            sx={{ color: "#000" , "&:focus":{color:"#1976d2"}, "&:hover":{color:"#1976d2"}}  }>
-
-            Vedi
-             </Button>
-    
-    );
-
-  };
-
-
-export default function DataGridSondaggi() {
-    const [sondaggi,setSondaggi]= useState([]); 
+export default function VediSondaggio() {
+    const [sondaggio,setSondaggio ]= useState([]); 
+ 
 
     const columns = [
-      
         {
             field: "id",
             headerName: "id",
-            width: 100  
-         }, 
+            width: 100
+        },
         {
             field: "titolo",
             headerName: "Titolo del sondaggio",
@@ -79,29 +50,20 @@ export default function DataGridSondaggi() {
             headerName: 'Email',
             width: 150
         },
-        {
-            field: 'Action',
-            // renderCell: () => <RenderButton/> No
-            renderCell: (e) => <RenderButton riga={e.row}/>,
-            //Renderizza alla riga 
-            // renderCell: RenderButton
-            width:150
-        
-        }
-    ]
+
     
+    ]
 
     useEffect(() => {
-        fetchSondaggi()
+        fetchSondaggio()
     },[])
 
-    const fetchSondaggi =()=>{
-        //fetch per prender i sondaggi
-        fetch("http://localhost:3000/API/getSondaggi").then(function (response) {
+    const fetchSondaggio =()=>{
+        //fetch per prender sondaggio
+        fetch("http://localhost:3000/API/getSondaggioById").then(function (response) {
             return response.json();
         }).then(function (json) {
             console.log(json)
-            
            
             let json_ridotto = json.map((x) => (
                 {
@@ -112,41 +74,33 @@ export default function DataGridSondaggi() {
                     data_inizio: x.dataInizio,
                     data_fine: x.dataFine,
                     email: x.emailCreatore,
-                     
-                    
+                  
                 } 
                ))
-           setSondaggi(json_ridotto);
+           setSondaggio(json_ridotto);
         
             
-            // console.log("Dati", sondaggi)
+          
         }).catch(function (err) {
             console.log("fetch" + err.message);
         
         })
         };
-       
 
     return (
-   
          <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={sondaggi}
+                rows={sondaggio}
                 columns={columns}
-                columnVisibilityModel={{id:false}}//Rendo hidden id
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+               
+            
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
-                
-          />   
-        
+        />
+
          </Box>
-       
-     
 
     );
 }
-
-

@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+
 
 export default function ButtonAppBar() {
   return (
@@ -14,11 +13,11 @@ export default function ButtonAppBar() {
         <Toolbar>
        
           <Typography variant="h6" component={"div"} sx={{ flexGrow: 0 }}>
-          <Button color="inherit" href="http://google.com">HOME</Button>
+          <Button color="inherit" href="/">HOME</Button>
           </Typography>
-          <Button color="inherit" href="./sondaggi.jsx">Sondaggi</Button>
-          <Button color="inherit" href='./domande.jsx'>Nuovo</Button>
-          <Button color="inherit">Analitycs</Button>
+          <Button color="inherit" href="/sondaggi">Sondaggi</Button>
+          <Button color="inherit" href='/nuovo'>Nuovo</Button>
+          <Button color="inherit" href='/analitycs'>Analitycs</Button>
         </Toolbar>
       </AppBar>
     </Box>

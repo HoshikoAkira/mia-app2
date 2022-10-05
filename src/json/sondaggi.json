@@ -1,103 +1,206 @@
 [
     {
-        "_id": "6334451ba32b4b1abad031e0",
+        "_id": "633a999500d3dec8cd442b8e",
         "titolo": "Sondaggio da cani",
         "sottotitolo": "Cosa ti piace di queste palle di pelo",
         "descrizione": "L'obiettivo del sondaggio è quello di verificare quali specie di cani piacciono agli impiegati",
-        "dataInizio": "2022-09-27T22:00:00.000Z",
-        "dataFine": "2022-10-01T22:00:00.000Z",
+        "dataInizio": "2022-10-03T08:13:09.479Z",
+        "dataFine": "2022-10-03T08:13:09.479Z",
         "emailCreatore": "pippo@ti.it",
         "emailDestinatari": [
             {
-                "_id": "63356f08adf080d0d5fae2ba",
+                "email": "gpgp@ti.it",
+                "_id": "633a999500d3dec8cd442b8f"
+            },
+            {
+                "email": "vgvg@ti.it",
+                "_id": "633a999500d3dec8cd442b90"
+            },
+            {
+                "email": "cscs@ti.it",
+                "_id": "633a999500d3dec8cd442b91"
+            }
+        ],
+        "domande": [
+            {
+                "testo": "Quale cane ti piace tra i seguenti?",
+                "tipologia": "risposta singola",
+                "indice": 0,
+                "risposte": [
+                    {
+                        "risposta": "Golden retriever",
+                        "_id": "633a999500d3dec8cd442b93"
+                    },
+                    {
+                        "risposta": "Chiwawa",
+                        "_id": "633a999500d3dec8cd442b94"
+                    },
+                    {
+                        "risposta": "Bulldog",
+                        "_id": "633a999500d3dec8cd442b95"
+                    },
+                    {
+                        "risposta": "Pastore tedesco",
+                        "_id": "633a999500d3dec8cd442b96"
+                    }
+                ],
+                "_id": "633a999500d3dec8cd442b92"
+            },
+            {
+                "testo": "Cosa ti piace di più del cane in questione?",
+                "tipologia": "Risposta aperta",
+                "indice": 1,
+                "risposte": [
+                    {
+                        "risposta": "Mi piace e basta.",
+                        "_id": "633a999500d3dec8cd442b98"
+                    }
+                ],
+                "_id": "633a999500d3dec8cd442b97"
+            },
+            {
+                "testo": "Quanto è economico mantenere questo cane?",
+                "tipologia": "risposta singola",
+                "indice": 2,
+                "risposte": [
+                    {
+                        "risposta": "Carissimo",
+                        "_id": "633a999500d3dec8cd442b9a"
+                    },
+                    {
+                        "risposta": "Caro",
+                        "_id": "633a999500d3dec8cd442b9b"
+                    },
+                    {
+                        "risposta": "Nella media",
+                        "_id": "633a999500d3dec8cd442b9c"
+                    },
+                    {
+                        "risposta": "Economico",
+                        "_id": "633a999500d3dec8cd442b9d"
+                    },
+                    {
+                        "risposta": "Economicissimo",
+                        "_id": "633a999500d3dec8cd442b9e"
+                    }
+                ],
+                "_id": "633a999500d3dec8cd442b99"
+            },
+            {
+                "testo": "Questa è una domanda vuota...",
+                "tipologia": "non ci sono risposte",
+                "indice": 3,
+                "risposte": [
+                    {
+                        "risposta": "",
+                        "_id": "633a999500d3dec8cd442ba0"
+                    }
+                ],
+                "_id": "633a999500d3dec8cd442b9f"
+            }
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "633ad8c4318e5e046ebc4735",
+        "titolo": "Sondaggio da gatti",
+        "sottotitolo": "Cosa ti piace di questi piccoli monelli?",
+        "descrizione": "L'obiettivo del sondaggio è quello di verificare quali specie di gatti piacciono agli impiegati",
+        "dataInizio": "2022-10-03T12:42:44.856Z",
+        "dataFine": "2022-10-03T12:42:44.856Z",
+        "emailCreatore": "pippo@ti.it",
+        "emailDestinatari": [
+            {
+                "_id": "633ad8c4318e5e046ebc4723",
                 "email": "gpgp@ti.it"
             },
             {
-                "_id": "63356f08adf080d0d5fae2bb",
+                "_id": "633ad8c4318e5e046ebc4724",
                 "email": "vgvg@ti.it"
             },
             {
-                "_id": "63356f08adf080d0d5fae2bc",
+                "_id": "633ad8c4318e5e046ebc4725",
                 "email": "cscs@ti.it"
             }
         ],
         "domande": [
             {
-                "_id": "63356f08adf080d0d5fae2bd",
-                "testo": "Quale cane ti piace tra i seguenti?",
+                "_id": "633ad8c4318e5e046ebc4726",
+                "testo": "Quale gatto ti piace tra i seguenti?",
                 "tipologia": "risposta singola",
-                "indice": "0",
+                "indice": 0,
                 "risposte": [
                     {
-                        "_id": "63356f08adf080d0d5fae2be",
-                        "risposta": "Golden retriever"
+                        "_id": "633ad8c4318e5e046ebc4727",
+                        "risposta": "Soriano"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2bf",
-                        "risposta": "Chiwawa"
+                        "_id": "633ad8c4318e5e046ebc4728",
+                        "risposta": "Persiano"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c0",
-                        "risposta": "Bulldog"
+                        "_id": "633ad8c4318e5e046ebc4729",
+                        "risposta": "Abissino"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c1",
-                        "risposta": "Pastore tedesco"
+                        "_id": "633ad8c4318e5e046ebc472a",
+                        "risposta": "Siamese"
                     }
                 ]
             },
             {
-                "_id": "63356f08adf080d0d5fae2c2",
-                "testo": "Cosa ti piace di più del cane in questione?",
+                "_id": "633ad8c4318e5e046ebc472b",
+                "testo": "Cosa ti piace di più del gatto in questione?",
                 "tipologia": "Risposta aperta",
-                "indice": "1",
+                "indice": 1,
                 "risposte": [
                     {
-                        "_id": "63356f08adf080d0d5fae2c3",
+                        "_id": "633ad8c4318e5e046ebc472c",
                         "risposta": "Mi piace e basta."
                     }
                 ]
             },
             {
-                "_id": "63356f08adf080d0d5fae2c4",
-                "testo": "Quanto è economico mantenere questo cane?",
+                "_id": "633ad8c4318e5e046ebc472d",
+                "testo": "Quanto è economico mantenere questo gatto?",
                 "tipologia": "risposta singola",
-                "indice": "2",
+                "indice": 2,
                 "risposte": [
                     {
-                        "_id": "63356f08adf080d0d5fae2c5",
+                        "_id": "633ad8c4318e5e046ebc472e",
                         "risposta": "Carissimo"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c6",
+                        "_id": "633ad8c4318e5e046ebc472f",
                         "risposta": "Caro"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c7",
+                        "_id": "633ad8c4318e5e046ebc4730",
                         "risposta": "Nella media"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c8",
+                        "_id": "633ad8c4318e5e046ebc4731",
                         "risposta": "Economico"
                     },
                     {
-                        "_id": "63356f08adf080d0d5fae2c9",
+                        "_id": "633ad8c4318e5e046ebc4732",
                         "risposta": "Economicissimo"
                     }
                 ]
             },
             {
-                "_id": "63356f08adf080d0d5fae2ca",
+                "_id": "633ad8c4318e5e046ebc4733",
                 "testo": "Questa è una domanda vuota...",
                 "tipologia": "non ci sono risposte",
-                "indice": "3",
+                "indice": 3,
                 "risposte": [
                     {
-                        "_id": "63356f08adf080d0d5fae2cb",
+                        "_id": "633ad8c4318e5e046ebc4734",
                         "risposta": ""
                     }
                 ]
             }
-        ]
+        ],
+        "__v": 0
     }
 ]

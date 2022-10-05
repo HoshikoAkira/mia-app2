@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
 
-import DataGridSondaggi from "./sondaggi"
+import VediSondaggio from "./VediSondaggio"
 
 
 function TabPanel(props) {
@@ -56,7 +56,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Designer" {...a11yProps(0)} />
-          <Tab label="Anteprima" {...a11yProps(1)} />
+        
         
         </Tabs>
       </Box>
@@ -64,15 +64,13 @@ export default function BasicTabs() {
 
         <Stack spacing={2} direction="row">
        
-        <DataGridSondaggi/>
+        <VediSondaggio/>
       
       
         </Stack>
 
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
+     
     
     </Box>
   );

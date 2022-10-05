@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { DataGrid } from '@mui/x-data-grid';
 
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 
@@ -13,31 +12,29 @@ import { useEffect } from 'react';
 
 
 
+
+
 export default function DataGridDemo() {
     const [domande,setDomande ]= useState([]); 
+ 
 
     const columns = [
         {
             field: 'id',
             headerName: 'ID',
-            width: 120
+            width: 200
         },
         {
             field: "testo",
             headerName: "Testo della domanda",
-            width: 300
+            width: 400
         },
         {
             field: 'tipology',
             headerName: 'Tipologia',
-            width: 120
+            width: 200
         },
 
-
-      //  { field: 'risposte', headerName: 'Risposte', width: 120 }
-       
-      
-    
     
     ]
 
@@ -63,7 +60,7 @@ export default function DataGridDemo() {
            setDomande(json_ridotto);
         
             
-            console.log("Dati", domande)
+            // console.log("Dati", domande)
         }).catch(function (err) {
             console.log("fetch" + err.message);
         

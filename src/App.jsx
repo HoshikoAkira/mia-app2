@@ -5,8 +5,13 @@ import theme from "./components/temaConfig"
 
 import TabPanel from "./components/tabs"
 import ButtonAppBar from "./components/navbar"
-import DataGridDemo from "./components/domande"
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import TabDomande from "./components/TabDomande"
+import HomePage from "./components/HomePage"
+import TabSondaggio from "./components/TabSondaggio"
+
 
 
 
@@ -15,23 +20,29 @@ function App() {
 
   return (
     < >
-    {/* //Collego gli elementi tramite id  */}
+ 
     {/* //Collego gli elementi tramite id  */}
       <BrowserRouter>
         <Routes>
-          <Route path="sondaggi/:id" element={<DataGridDemo />} />
-        </Routes>
+
+        <Route exact path="/" element={<HomePage/>} />
+        <Route exact path="/sondaggi" element={<TabPanel/>} />
+        <Route exact path="/domande/:id" element={<TabDomande/>} />
+        <Route exact path="/vediSondaggio/:id" element={<TabSondaggio/>} /> 
+        
+        
+        </Routes> 
       </BrowserRouter> 
       <br></br>
 
 
       <ThemeProvider theme={theme}>
         <ButtonAppBar />
-      </ThemeProvider >
+      </ThemeProvider > 
 
 
       <br></br><br></br><br></br>
-      <TabPanel />
+     
 
       
         {/* <Button color="secondary" variant="contained" href="http://google.com" fullWidth>Google</Button> */}
