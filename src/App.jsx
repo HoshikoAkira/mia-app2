@@ -14,8 +14,6 @@ import TabSondaggio from "./components/TabSondaggio"
 
 
 
-
-
 function App() {
 
   return (
@@ -28,7 +26,7 @@ function App() {
         <Route exact path="/" element={<HomePage/>} />
         <Route exact path="/sondaggi" element={<TabPanel/>} />
         <Route exact path="/domande/:id" element={<TabDomande/>} />
-        <Route exact path="/vediSondaggio/:id" element={<TabSondaggio/>} /> 
+        <Route exact path="/VediSondaggio/:id" element={<TabSondaggio/>} /> 
         
         
         </Routes> 

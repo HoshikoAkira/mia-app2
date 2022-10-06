@@ -1,86 +1,74 @@
 import * as React from 'react';
 
-import { DataGrid } from '@mui/x-data-grid';
 
 import { Box } from '@mui/system';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
+
 
 
 
 
 export default function VediSondaggio() {
-    const [sondaggio,setSondaggio ]= useState([]); 
- 
-
-    const columns = [
-        {
-            field: "id",
-            headerName: "id",
-            width: 100
-        },
-        {
-            field: "titolo",
-            headerName: "Titolo del sondaggio",
-            width: 200
-        },
-        {
-            field: 'sottotitolo',
-            headerName: 'Sottotitolo',
-            width: 150
-        },
-        {
-            field: 'descrizione',
-            headerName: 'Descrizione',
-            width: 200
-        },
-        {
-            field: 'data_inizio',
-            headerName: 'dataInizio',
-            width: 150
-        },
-        {
-            field: 'data_fine',
-            headerName: 'dataFine',
-            width: 150
-        },
-        {
-            field: 'email',
-            headerName: 'Email',
-            width: 150
-        },
 
     
-    ]
+    const [sondaggio,setSondaggio ]= useState([]); 
+    const {id}=useParams();
 
+    // const [idSondaggio,setidSondaggio]=useState(""); 
+    const [titolo,setTitolo ]= useState(""); 
+    const [sottotitolo,setSottotitolo ]= useState(""); 
+    // const [descrizione,setDescrizione ]= useState(""); 
+    // const [dataInizio,setDataInizio ]= useState(""); 
+    // const [dataFine,setDataFine]= useState(""); 
+    // const [email,setEmail]= useState(""); 
+  
+
+   
+   
     useEffect(() => {
-        fetchSondaggio()
+        // console.log('=====>'+ id);
+        fetchSondaggio(id)//Id dal fetch del sondaggio
+        
     },[])
 
-    const fetchSondaggio =()=>{
+    const fetchSondaggio =(id)=>{
+        console.log("http://localhost:3000/api/getSondaggioById/"+id)
         //fetch per prender sondaggio
-        fetch("http://localhost:3000/API/getSondaggioById").then(function (response) {
+        fetch("http://localhost:3000/api/getSondaggioById/"+id).then(function (response) {
             return response.json();
         }).then(function (json) {
-            console.log(json)
-           
-            let json_ridotto = json.map((x) => (
-                {
-                    id: x._id,
-                    titolo: x.titolo,
-                    sottotitolo: x.sottotitolo,
-                    descrizione: x.descrizione,
-                    data_inizio: x.dataInizio,
-                    data_fine: x.dataFine,
-                    email: x.emailCreatore,
-                  
-                } 
-               ))
-           setSondaggio(json_ridotto);
-        
             
-          
+            // console.log(json)
+           
+            
+
+               let json_ridotto = 
+                {
+                    // _id: json.idSondaggio,
+                    titolo: json.titolo,
+                    sottotitolo: json.sottotitolo,
+                    // descrizione: json.descrizione,
+                    // data_inizio: json.dataInizio,
+                    // data_fine: json.dataFine,
+                    // email: json.emailCreatore
+                  
+                }
+                // setidSondaggio(json._id),
+                setTitolo(json.titolo)
+                setSottotitolo(json.sottotitolo),
+                // setDescrizione(json.descrizione),
+                // setDataInizio(json.dataInizio),
+                // setDataFine(json.dataFine),
+                // setEmail(json.emailCreatore)
+                
+            
+            console.log(json_ridotto)
+            setSondaggio([json_ridotto]);
+        
         }).catch(function (err) {
             console.log("fetch" + err.message);
         
@@ -89,18 +77,22 @@ export default function VediSondaggio() {
 
     return (
          <Box sx={{ height: 400, width: '100%' }}>
-            <DataGrid
-                rows={sondaggio}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-               
-            
-                disableSelectionOnClick
-                experimentalFeatures={{ newEditingApi: true }}
-        />
+         
+            <TextField value={titolo} onChange={(e) => {
+                setTitolo(e.target.value)
+            }} />
+          <TextField id="outlined-basic" label="Sottotitolo" variant="outlined" 
+         value={sottotitolo} onChange={(e)=>{
+      
+              setSottotitolo(e.target.value)
+         }
+        }
+         />
 
-         </Box>
+            <Button variant="text" onClick={() => {
+                console.log(titolo);
+            }}>Save</Button>
+        </Box>
 
     );
 }

@@ -22,7 +22,7 @@ const RenderButton = (props) => {
             onClick={() => {
               
                 //Al click il bottone mi rimanda al sondaggio
-                navigate("/VediSondaggi/" + props.riga.id );
+                navigate("/VediSondaggio/" + props.riga.id );
                  
             }}
           
