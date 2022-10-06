@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-import { Box } from '@mui/system';
+import { Box, padding } from '@mui/system';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -10,84 +10,116 @@ import { Button, TextField } from '@mui/material';
 
 
 
-
-
 export default function VediSondaggio() {
 
-    
-    const [sondaggio,setSondaggio ]= useState([]); 
-    const {id}=useParams();
+
+    const [sondaggio, setSondaggio] = useState([]);
+    const { id } = useParams();
 
     // const [idSondaggio,setidSondaggio]=useState(""); 
-    const [titolo,setTitolo ]= useState(""); 
-    const [sottotitolo,setSottotitolo ]= useState(""); 
-    // const [descrizione,setDescrizione ]= useState(""); 
-    // const [dataInizio,setDataInizio ]= useState(""); 
-    // const [dataFine,setDataFine]= useState(""); 
-    // const [email,setEmail]= useState(""); 
-  
+    const [titolo, setTitolo] = useState("");
+    const [sottotitolo, setSottotitolo] = useState("");
+    const [descrizione,setDescrizione ]= useState(""); 
+    const [dataInizio,setDataInizio ]= useState(""); 
+    const [dataFine,setDataFine]= useState(""); 
+    const [email,setEmail]= useState(""); 
 
-   
-   
+
+
+
     useEffect(() => {
         // console.log('=====>'+ id);
         fetchSondaggio(id)//Id dal fetch del sondaggio
-        
-    },[])
 
-    const fetchSondaggio =(id)=>{
-        console.log("http://localhost:3000/api/getSondaggioById/"+id)
+    }, [])
+
+    const fetchSondaggio = (id) => {
+        console.log("http://localhost:3000/api/getSondaggioById/" + id);
         //fetch per prender sondaggio
-        fetch("http://localhost:3000/api/getSondaggioById/"+id).then(function (response) {
+        fetch("http://localhost:3000/api/getSondaggioById/" + id).then(function (response) {
             return response.json();
         }).then(function (json) {
-            
-            // console.log(json)
-           
-            
 
-               let json_ridotto = 
-                {
-                    // _id: json.idSondaggio,
-                    titolo: json.titolo,
-                    sottotitolo: json.sottotitolo,
-                    // descrizione: json.descrizione,
-                    // data_inizio: json.dataInizio,
-                    // data_fine: json.dataFine,
-                    // email: json.emailCreatore
-                  
-                }
-                // setidSondaggio(json._id),
-                setTitolo(json.titolo)
-                setSottotitolo(json.sottotitolo),
-                // setDescrizione(json.descrizione),
-                // setDataInizio(json.dataInizio),
-                // setDataFine(json.dataFine),
-                // setEmail(json.emailCreatore)
-                
-            
-            console.log(json_ridotto)
-            setSondaggio([json_ridotto]);
+            console.log(json)
+
+
+
+            let json_ridotto =
+            {
+                // _id: json.idSondaggio,
+                titolo: json.titolo,
+                sottotitolo: json.sottotitolo,
+                descrizione: json.descrizione,
+                data_inizio: json.dataInizio,
+                data_fine: json.dataFine,
+                email: json.emailCreatore
+
+            }
+            // setidSondaggio(json._id),
+            setTitolo(json.titolo)
+            setSottotitolo(json.sottotitolo)
+            setDescrizione(json.descrizione)
+            setDataInizio(json.dataInizio)
+            setDataFine(json.dataFine)
+            setEmail(json.emailCreatore)
+
         
+                console.log(json_ridotto)
+            setSondaggio([json_ridotto]);
+
         }).catch(function (err) {
             console.log("fetch" + err.message);
-        
+
         })
-        };
+    };
 
     return (
-         <Box sx={{ height: 400, width: '100%' }}>
-         
-            <TextField value={titolo} onChange={(e) => {
+        <Box   component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+       <div>
+            <TextField  label="Titolo" variant="outlined"
+             value={titolo} onChange={(e) => {
                 setTitolo(e.target.value)
             }} />
-          <TextField id="outlined-basic" label="Sottotitolo" variant="outlined" 
-         value={sottotitolo} onChange={(e)=>{
-      
-              setSottotitolo(e.target.value)
-         }
-        }
-         />
+
+            <TextField label="Sottotitolo" variant="outlined"
+                value={sottotitolo} onChange={(e) => {
+
+                    setSottotitolo(e.target.value)
+                }}
+            /> </div>
+           
+             <TextField label="Descrizione" variant="outlined"
+                value={descrizione} onChange={(e) => {
+
+                    setDescrizione(e.target.value)
+                }}
+            /> <div>
+             <TextField label="Data Inizio" variant="outlined"
+                value={dataInizio} onChange={(e) => {
+
+                    setDataInizio(e.target.value)
+                }}
+            /> 
+             <TextField label="Data Fine" variant="outlined"
+                value={dataFine} onChange={(e) => {
+
+                    setDataFine(e.target.value)
+                }}
+            /> </div>
+             <TextField label="Email" variant="outlined" 
+                value={email} onChange={(e) => {
+
+                    setEmail(e.target.value)
+                }}
+            /> 
+            
+            
 
             <Button variant="text" onClick={() => {
                 console.log(titolo);
