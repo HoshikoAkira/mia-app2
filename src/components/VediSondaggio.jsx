@@ -1,18 +1,40 @@
 import * as React from 'react';
 
 
-import { Box, padding } from '@mui/system';
+import { Box } from '@mui/system';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useActionData, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+// const BottoneDomande = () => {
+//     const navigate=useNavigate();
+  
+     
+//     return (
+       
+//         <Button  variant="outlined"  size="medium" 
+//             onClick={() => {
+              
+//                 //Al click il bottone mi rimanda alle domande
+//                 navigate("/domande/633a999500d3dec8cd442b8e"  );
+                
+//             }}>
+
+//             Vedi Domande
+//              </Button>
+    
+//     );
+
+//   };
 
 
 
 export default function VediSondaggio() {
 
-
+    const navigate=useNavigate();
     const [sondaggio, setSondaggio] = useState([]);
     const { id } = useParams();
 
@@ -34,7 +56,7 @@ export default function VediSondaggio() {
     }, [])
 
     const fetchSondaggio = (id) => {
-        console.log("http://localhost:3000/api/getSondaggioById/" + id);
+        // console.log("http://localhost:3000/api/getSondaggioById/" + id);
         //fetch per prender sondaggio
         fetch("http://localhost:3000/api/getSondaggioById/" + id).then(function (response) {
             return response.json();
@@ -100,6 +122,11 @@ export default function VediSondaggio() {
                     setDescrizione(e.target.value)
                 }}
             /> <div>
+
+
+
+
+                
              <TextField label="Data Inizio" variant="outlined"
                 value={dataInizio} onChange={(e) => {
 
@@ -111,20 +138,41 @@ export default function VediSondaggio() {
 
                     setDataFine(e.target.value)
                 }}
-            /> </div>
+            /> 
+            </div>
              <TextField label="Email" variant="outlined" 
                 value={email} onChange={(e) => {
 
                     setEmail(e.target.value)
                 }}
-            /> 
+            />
+            {/* <div>
+             
+            <BottoneDomande />
+            </div>  */}
             
-            
+             <div>
+             
+            <Button variant="outlined"  size="medium" onClick={() => {
+                // console.log(titolo);
+            }}>Aggiorna
 
-            <Button variant="text" onClick={() => {
-                console.log(titolo);
-            }}>Save</Button>
+            </Button>
+             
+
+          <Button variant="outlined" size="medium" onClick={()=>{navigate("/domande");
+                
+          }}
+          >
+                Vedi Domande
+            </Button>
+
+           </div>
+
         </Box>
+
+
+
 
     );
 }

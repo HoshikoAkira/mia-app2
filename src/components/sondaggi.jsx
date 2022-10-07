@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const RenderButton = (props) => {
+const BottoneSondaggio = (props) => {
     const navigate=useNavigate();
   
      
@@ -82,7 +82,7 @@ export default function DataGridSondaggi() {
         {
             field: 'Action',
             // renderCell: () => <RenderButton/> No
-            renderCell: (e) => <RenderButton riga={e.row}/>,
+            renderCell: (e) => <BottoneSondaggio riga={e.row}/>,
             //Renderizza alla riga 
             // renderCell: RenderButton
             width:150

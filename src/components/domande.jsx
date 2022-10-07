@@ -7,8 +7,7 @@ import { Button } from '@mui/material';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
-
-
+import { useParams } from 'react-router-dom';
 
 
 
@@ -16,6 +15,7 @@ import { useEffect } from 'react';
 
 export default function DataGridDemo() {
     const [domande,setDomande ]= useState([]); 
+    const { id } = useParams();
  
 
     const columns = [
@@ -39,19 +39,19 @@ export default function DataGridDemo() {
     ]
 
     useEffect(() => {
-        fetchDomande()
+        fetchDomande(id)
     },[])
 
-    const fetchDomande =()=>{
+    const fetchDomande = (id) => {
         //fetch per prender le domande
-        fetch("http://127.0.0.1:5500/src/json/domande.json").then(function (response) {
+        fetch(" http://localhost:3000/API/getDomandeByIdSondaggio" + id).then(function (response) {
             return response.json();
         }).then(function (json) {
             console.log(json)
            
             let json_ridotto = json.map((x) => (
                 {
-                    id: x.testo,
+                    id: x.id,
                     testo: x.testo,
                     tipology: x.tipologia
                   
