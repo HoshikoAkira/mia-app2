@@ -9,7 +9,28 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
 
+
+
+const BottoneElimina = (props) => {
+    const navigate=useNavigate();
+
+
+      return (
+      
+          <Button
+              variant="outlined" size="small"    onClick={() => {
+                console.log(props.riga.id);
+                fetch("http://localhost:3000/API/deleteDomandaById/" + props.riga.id  ,{method:"PATCH"})
+                return ((navigate("/sondaggi/" )));
+              }}>Elimina
+          </Button>
+      );
+    };
+
+
+   
 
 
 
@@ -34,26 +55,40 @@ export default function DataGridDemo() {
             headerName: 'Tipologia',
             width: 200
         },
+        {
+            field: 'indice',
+            headerName: 'Indice',
+            width: 200
+        },
+        
+        {
+            field: 'Elimina',
+            renderCell: (e) => <BottoneElimina  riga={e.row}/>,
+            width:150
+        
+        }
 
     
     ]
 
     useEffect(() => {
+        // console.log(".." +id);
         fetchDomande(id)
     },[])
 
     const fetchDomande = (id) => {
         //fetch per prender le domande
-        fetch(" http://localhost:3000/API/getDomandeByIdSondaggio" + id).then(function (response) {
+        fetch(" http://localhost:3000/API/getDomandeByIdSondaggio/" + id).then(function (response) {
             return response.json();
         }).then(function (json) {
             console.log(json)
            
             let json_ridotto = json.map((x) => (
                 {
-                    id: x.id,
+                    id: x._id,
                     testo: x.testo,
-                    tipology: x.tipologia
+                    tipology: x.tipologia,
+                    indice: x.indice
                   
                 } 
                ))
@@ -73,8 +108,9 @@ export default function DataGridDemo() {
                 rows={domande}
                 columns={columns}
                 pageSize={5}
+                columnVisibilityModel={{id:false}}//Rendo hidden id
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+               
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
         />

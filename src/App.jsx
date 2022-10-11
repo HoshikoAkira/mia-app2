@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TabDomande from "./components/TabDomande"
 import HomePage from "./components/HomePage"
 import TabSondaggio from "./components/TabSondaggio"
+import TabNuovo from "./components/TabNuovo"
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/sondaggi" element={<TabPanel/>} />
         <Route exact path="/domande/:id" element={<TabDomande/>} />
         <Route exact path="/VediSondaggio/:id" element={<TabSondaggio/>} /> 
+        <Route exact path="/Nuovo" element={<TabNuovo/>} /> 
         
         
         </Routes> 

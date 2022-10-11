@@ -18,7 +18,7 @@ const BottoneSondaggio = (props) => {
      
     return (
        
-        <Button
+        <Button variant="outlined"  size="small"
             onClick={() => {
               
                 //Al click il bottone mi rimanda al sondaggio
@@ -26,17 +26,33 @@ const BottoneSondaggio = (props) => {
                  
             }}
           
-            component="button"
-            variant="text"
-            size="small"
-            sx={{ color: "#000" , "&:focus":{color:"#1976d2"}, "&:hover":{color:"#1976d2"}}  }>
-
+            // component="button"
+            // variant="text"
+            // size="small"
+            // sx={{ color: "#000" , "&:focus":{color:"#1976d2"}, "&:hover":{color:"#1976d2"}}  }>
+>
             Vedi
              </Button>
     
     );
 
   };
+
+  const BottoneElimina = (props) => {
+    const navigate=useNavigate();
+
+
+      return (
+      
+          <Button
+              variant="outlined" size="small"    onClick={() => {
+                console.log(props.riga.id );
+                fetch("http://localhost:3000/API/deleteSondaggioById/" + props.riga.id  ,{method:"delete"})
+                return ((navigate("/sondaggi/" )));
+              }}>Elimina
+          </Button>
+      );
+    };
 
 
 export default function DataGridSondaggi() {
@@ -66,12 +82,12 @@ export default function DataGridSondaggi() {
         },
         {
             field: 'data_inizio',
-            headerName: 'dataInizio',
+            headerName: 'Data Inizio',
             width: 150
         },
         {
             field: 'data_fine',
-            headerName: 'dataFine',
+            headerName: 'Data Fine',
             width: 150
         },
         {
@@ -85,7 +101,13 @@ export default function DataGridSondaggi() {
             renderCell: (e) => <BottoneSondaggio riga={e.row}/>,
             //Renderizza alla riga 
             // renderCell: RenderButton
-            width:150
+            width:130
+        
+        },
+        {
+            field: 'Elimina',
+            renderCell: (e) => <BottoneElimina riga={e.row}/>,
+            width:130
         
         }
     ]
@@ -136,7 +158,7 @@ export default function DataGridSondaggi() {
                 columnVisibilityModel={{id:false}}//Rendo hidden id
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                // checkboxSelection
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
                 
