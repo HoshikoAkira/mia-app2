@@ -10,6 +10,8 @@ import { Button,  TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import BasicSelect from './BasicSelect';
 
+import dayjs from 'dayjs';
+
 
 export default function VediSondaggio() {
 
@@ -115,9 +117,14 @@ export default function VediSondaggio() {
                 }}
             /> 
              <TextField label="Data Fine" variant="outlined"
-                value={dataFine} onChange={(e) => {
-
-                    setDataFine(e.target.value)
+                value={dataFine}
+                minDate={dayjs('2020-01-01')}
+                maxDate={dayjs('2030-01-01')}
+                
+                inputFormat="DD/MM/YYYY"
+                onChange={(e) => {
+                    
+                setDataFine(e.target.value)
                 }}
             /> 
             </div>

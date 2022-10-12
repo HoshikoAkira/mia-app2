@@ -4,8 +4,9 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import BasicSelect from './BasicSelect';
 import {Button} from "@mui/material"
-import { useForm } from "react-hook-form";
-import { Form, useNavigate } from 'react-router-dom';
+
+
+import ResponsiveDatePickers from "./Date"
 
 export default function Nuovo () {
 
@@ -97,12 +98,21 @@ export default function Nuovo () {
         />
        </div>
     
+    
+       <div>
+      <ResponsiveDatePickers/>
+        </div>
+
+
+
+
+{/* 
       <div>
       <TextField label="Data Inizio" variant="outlined" />
 
       <TextField label="Data Fine" variant="outlined" />
 
-      </div>
+      </div> */}
 
       <TextField 
           id="filled-multiline-flexible"
@@ -116,8 +126,6 @@ export default function Nuovo () {
       <div>
         <BasicSelect/>
 
-      </div>
-      <div>
         <Button variant="outlined" size="medium" sx={{ marginRight: "20px", marginTop: "20px",marginLeft:"10px" }} onClick={() => {
         }}>
           Continua
