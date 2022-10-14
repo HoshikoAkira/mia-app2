@@ -5,11 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function BasicSelect() {
-  const [stato, setStato] = React.useState('');
-
-  const handleChange = (event) => {
-    setStato(event.target.value);
+export default function BasicSelect(props) {
+  
+const handleChange = (event) => {
+    console.log(event)
+    props.onChange(event.target.value);
   };
 
   return (
@@ -20,8 +20,9 @@ export default function BasicSelect() {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
          
-          value={stato}
+          value={props.valore}
           label="Stato"
+          
           onChange={handleChange}
         >
           <MenuItem value={"aperto"}>Aperto</MenuItem>
