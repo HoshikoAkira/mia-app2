@@ -40,15 +40,16 @@ const BottoneSondaggio = (props) => {
 
   const BottoneElimina = (props) => {
     const navigate=useNavigate();
-
-
+    
+   
       return (
       
           <Button
               variant="outlined" size="small"    onClick={() => {
                 console.log(props.riga.id );
+
                 fetch("http://localhost:3000/API/deleteSondaggioById/" + props.riga.id  ,{method:"delete"})
-                return ((navigate("/sondaggi/" )));
+                 .then(window.location.reload(true));//Refresc della pagina
               }}>Elimina
           </Button>
       );

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button, Icon } from '@mui/material';
-import { green } from '@mui/material/colors';
 
-export default function InserisciDomande() {
+export default function MultilineTextFields() {
   const [value, setValue] = React.useState('Controlled');
 
-
+//   const handleChange = (event) => {
+//     setValue(event.target.value);
+//   };
 
   return (
     <Box
@@ -22,29 +22,12 @@ export default function InserisciDomande() {
        
         <TextField
           id="standard-textarea"
-          label="Inserisci Domanda"
+          label="Risposta aperta"
           placeholder="Placeholder"
           multiline
           variant="standard"
         />
-       <div>
-       <Button
-            type='submit'
-            variant="outlined"
-            size="medium"
-            sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
-            
-          >
-            CheckBox
-          </Button>
-         
-          </div>
-     
-
-
-
-
-
+       
       </div>
     </Box>
   );

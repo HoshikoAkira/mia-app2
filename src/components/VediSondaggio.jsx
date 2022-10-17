@@ -132,10 +132,9 @@ export default function VediSondaggio() {
 
                 <TextField label="Sottotitolo" variant="outlined"
                     value={sottotitolo} onChange={(e) => {
-
-                        setSottotitolo(e.target.value)
-                    }}
-                /> </div>
+                          setSottotitolo(e.target.value)
+                    }} /> 
+                </div>
 
             <TextField label="Descrizione" variant="outlined"
                 value={descrizione} onChange={(e) => {
@@ -193,25 +192,23 @@ export default function VediSondaggio() {
             {/*-------------  Bottoni aggiorna ed elimina------------- */}
             <div>
 
-            <Button
-            type='submit'
-            variant="outlined"
-            size="medium"
-            sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
-          >
-            Aggiorna
-          </Button>
+                    <Button
+                        type='submit'
+                        variant="outlined"
+                        size="medium"
+                        sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
+                    >
+                        Aggiorna
+                    </Button>
 
 
-                <Button variant="outlined" size="medium" sx={{ marginTop: "20px" }} onClick={() => {
-                    navigate("/domande/" + id);
+                    <Button variant="outlined" size="medium" sx={{ marginTop: "20px" }} onClick={() => {
+                        navigate("/domande/" + id);
 
-                }}
-                >
-                    Vedi Domande
-                </Button>
-
-
+                    }}
+                    >
+                        Vedi Domande
+                    </Button>
             </div>
             {/* ---------------------Fine bottoni ----------- */}
 
