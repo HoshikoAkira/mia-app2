@@ -16,8 +16,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
-
-
 export default function VediSondaggio() {
 
     const navigate = useNavigate();
@@ -48,31 +46,30 @@ export default function VediSondaggio() {
             return response.json();
         }).then(function (json) {
 
-            console.log(json)
+            console.log("JSON RICEVUTO: ", json)
 
             let json_ridotto =
             {
-                _id: json.idSondaggio,
+                _id: json._id,
                 titolo: json.titolo,
                 sottotitolo: json.sottotitolo,
                 descrizione: json.descrizione,
-                data_inizio: json.dataInizio,
-                data_fine: json.dataFine,
+                dataInizio: json.dataInizio,
+                dataFine: json.dataFine,
                 email: json.emailCreatore,
                 stato: json.stato
 
             }
-            setidSondaggio(json.id)
-            setTitolo(json.titolo)
-            setSottotitolo(json.sottotitolo)
-            setDescrizione(json.descrizione)
-            setDataInizio(json.dataInizio)
-            setDataFine(json.dataFine)
-            setEmail(json.emailCreatore)
-            setStato(json.stato)
+            setidSondaggio(json_ridotto._id)
+            setTitolo(json_ridotto.titolo)
+            setSottotitolo(json_ridotto.sottotitolo)
+            setDescrizione(json_ridotto.descrizione)
+            setDataInizio(json_ridotto.dataInizio)
+            setDataFine(json_ridotto.dataFine)
+            setEmail(json_ridotto.email)
+            setStato(json_ridotto.stato)
 
-
-            console.log(json_ridotto)
+            console.log("JSON RIDOTTO: ", json_ridotto)
             setSondaggio([json_ridotto]);
 
         }).catch(function (err) {
@@ -84,31 +81,32 @@ export default function VediSondaggio() {
     const SubmitAggiorna = (e) => {
         e.preventDefault();
 
-    
-    //Fetch che passa i parametri aggiornati al db
-    fetch("http://localhost:3000/API/updateSondaggioById/"+id, { method: "PATCH", headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({
-        "titolo": titolo,
-        "sottotitolo": sottotitolo,
-        "descrizione": descrizione,
-        "dataInizio": dataInizio,
-        "dataFine": dataFine,
-        "emailCreatore": email,
-        "stato": stato
-      })
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {
-        console.log(json);
-      })
-      .then(navigate("/VediSondaggio/"+id)) //Funzione a cui navigare
-      .catch(function (err) {
-        console.log("errore fetch: " + err.message);
-      })
 
-  };
+        //Fetch che passa i parametri aggiornati al db
+        fetch("http://localhost:3000/API/updateSondaggioById/" + id, {
+            method: "PATCH", headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "titolo": titolo,
+                "sottotitolo": sottotitolo,
+                "descrizione": descrizione,
+                "dataInizio": dataInizio,
+                "dataFine": dataFine,
+                "emailCreatore": email,
+                "stato": stato
+            })
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                console.log(json);
+            })
+            .then(navigate("/VediSondaggio/" + id)) //Funzione a cui navigare
+            .catch(function (err) {
+                console.log("errore fetch: " + err.message);
+            })
+
+    };
 
 
     return (
@@ -124,73 +122,71 @@ export default function VediSondaggio() {
             {/* -------------Parametri del form---------------- */}
             <form onSubmit={SubmitAggiorna}>
 
-            <div>
-                <TextField label="Titolo" variant="outlined"
-                    value={titolo} onChange={(e) => {
-                        setTitolo(e.target.value)
-                    }} />
+                <div>
+                    <TextField label="Titolo" variant="outlined"
+                        value={titolo} onChange={(e) => {
+                            setTitolo(e.target.value)
+                        }} />
 
-                <TextField label="Sottotitolo" variant="outlined"
-                    value={sottotitolo} onChange={(e) => {
-                          setSottotitolo(e.target.value)
-                    }} /> 
+                    <TextField label="Sottotitolo" variant="outlined"
+                        value={sottotitolo} onChange={(e) => {
+                            setSottotitolo(e.target.value)
+                        }} />
                 </div>
 
-            <TextField label="Descrizione" variant="outlined"
-                value={descrizione} onChange={(e) => {
+                <TextField label="Descrizione" variant="outlined"
+                    value={descrizione} onChange={(e) => {
 
-                    setDescrizione(e.target.value)
-                }}
-            /> <div>
-                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <MobileDatePicker
-                    label="Data Inizio"
-                    minDate={dayjs('2020-01-01')}
-                    maxDate={dayjs('2030-01-01')}
-                    value={dataInizio}
-                    inputFormat="DD/MM/YYYY"
-
-                    onChange={(e) => {
-                        setDataInizio(e)
+                        setDescrizione(e.target.value)
                     }}
-                    renderInput={(params) => <TextField {...params} />}
                 />
-                 <MobileDatePicker
-                    label="Data Fine"
-                    minDate={dayjs('2020-01-01')}
-                    maxDate={dayjs('2030-01-01')}
-                    value={dataFine}
-                    inputFormat="DD/MM/YYYY"
+                <div>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <MobileDatePicker
+                            label="Data Inizio"
+                            minDate={dayjs('2020-01-01')}
+                            maxDate={dayjs('2030-01-01')}
+                            value={dataInizio}
+                            inputFormat="DD/MM/YYYY"
 
-                    onChange={(e) => {
-                        setDataFine(e)
+                            onChange={(e) => {
+                                setDataInizio(e)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                        <MobileDatePicker
+                            label="Data Fine"
+                            minDate={dayjs('2020-01-01')}
+                            maxDate={dayjs('2030-01-01')}
+                            value={dataFine}
+                            inputFormat="DD/MM/YYYY"
+
+                            onChange={(e) => {
+                                setDataFine(e)
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+                </div>
+
+                <TextField label="Email" variant="outlined"
+                    value={email} onChange={(e) => {
+                        setEmail(e.target.value)
                     }}
-                    renderInput={(params) => <TextField {...params} />}
                 />
-                 </LocalizationProvider>
-               
-              
-            </div>
+                {/* Prova basic select */}
 
-            <TextField label="Email" variant="outlined"
-                value={email} onChange={(e) => {
+                <div>
+                    <BasicSelect valore={stato} onChange={(e) => {
+                        setStato(e)
+                    }
 
-                    setEmail(e.target.value)
-                }}
-            />
-            {/* Prova basic select */}
+                    } />
 
-            <div>
-                <BasicSelect valore={stato} onChange={(e) => {
-                    setStato(e)
-                }
+                </div>
 
-                } />
-
-            </div>
-
-            {/*-------------  Bottoni aggiorna ed elimina------------- */}
-            <div>
+                {/*-------------  Bottoni aggiorna ed elimina------------- */}
+                <div>
 
                     <Button
                         type='submit'
@@ -200,17 +196,17 @@ export default function VediSondaggio() {
                     >
                         Aggiorna
                     </Button>
+  
 
-
-                    <Button variant="outlined" size="medium" sx={{ marginTop: "20px" }} onClick={() => {
+                    <Button variant="outlined" size="medium" sx={{ marginTop: "20px",marginLeft:"40px"}} onClick={() => {
                         navigate("/domande/" + id);
 
                     }}
                     >
                         Vedi Domande
                     </Button>
-            </div>
-            {/* ---------------------Fine bottoni ----------- */}
+                </div>
+                {/* ---------------------Fine bottoni ----------- */}
 
             </form>
         </Box>

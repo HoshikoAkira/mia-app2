@@ -1,8 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { useState, useEffect } from 'react';
-import BasicSelect from './BasicSelect';
 import { Button } from "@mui/material";
 import ResponsiveDatePickers from "./Date"
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +21,7 @@ export default function Nuovo() {
     dataInizio: new Date(),
     dataFine: new Date(),
     emailCreatore: "",
-    stato: "",
+    stato: "bozza"
   });
 
   const cambiaTitolo = (e) => {
@@ -83,10 +86,10 @@ export default function Nuovo() {
     e.preventDefault();
     // console.log(dati);
 
-
     //Fetch che passa i parametri da passare al db
-    fetch("http://localhost:3000/API/postSondaggio1", { method: "POST", headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({
+    fetch("http://localhost:3000/API/postSondaggio1", {
+      method: "POST", headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         "titolo": dati.titolo,
         "sottotitolo": dati.sottotitolo,
         "descrizione": dati.descrizione,
@@ -97,12 +100,20 @@ export default function Nuovo() {
       })
     })
       .then(function (response) {
-        return response.json();
+        //il DB risponde con un json (il sondaggio appena trovato)
+        return response.json()
       })
       .then(function (json) {
-        console.log(json);
+        //prendo l'ID del sondaggio da questo json
+        let idNuovoSondaggio = json._id
+        console.log(idNuovoSondaggio)
+        return idNuovoSondaggio
       })
-      .then(navigate("/inserisciDomande")) //Funzione a cui navigare
+      //Funzione a cui navigare
+      .then((idNuovoSondaggio) =>
+        //passo questo ID alla pagina successiva
+        navigate("/inserisciDomande/" + idNuovoSondaggio)
+      )
       .catch(function (err) {
         console.log("errore fetch: " + err.message);
       })
@@ -112,7 +123,7 @@ export default function Nuovo() {
   return (
 
     <Box
-      sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+      sx={{ '& .MuiTextField-root': { m: 1, width: '55ch' } }}
       noValidate
       autoComplete="off"
     >
@@ -158,31 +169,10 @@ export default function Nuovo() {
           />
         </div>
 
-
+        {/* METTERE IL DATE PICKER PER INTERO COME IN VEDISONDAGGIO */}
         <div>
           <ResponsiveDatePickers />
         </div>
-
-        {/* <div>
-          <TextField
-            id='campo-data-inizio'
-            name='dataInizio'
-            value={dati.dataInizio}
-            label="Data Inizio"
-            variant="outlined"
-            onChange={cambiaDataInizio}
-          />
-
-          <TextField
-            id='campo-data-fine'
-            name='dataFine'
-            value={dati.dataFine}
-            label="Data Fine"
-            variant="outlined"
-            onChange={cambiaDataFine}
-          />
-
-        </div> */}
 
         <TextField
           id="campo-email-creatore"
@@ -195,29 +185,37 @@ export default function Nuovo() {
           onChange={cambiaEmailCreatore}
         />
 
-
+        {/* Selettore dello stato */}
         <div>
-          <BasicSelect
-            id="campo-stato"
-            // valore={stato}
-            name="stato"
-            // value={"aperto"}
-            onChange={cambiaStato}
-
-          />
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="demo-simple-select-label">Stato</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="simple-select"
+                name="stato"
+                label="Stato"
+                defaultValue={"bozza"}
+                onChange={cambiaStato}
+              >
+                <MenuItem value={"aperto"}>Aperto</MenuItem>
+                <MenuItem value={"chiuso"}>Concluso</MenuItem>
+                <MenuItem value={"bozza"}>Bozza</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
 
           <Button
             type='submit'
             variant="outlined"
             size="medium"
-            sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
+            sx={{  marginTop: "20px" ,float:"right" }}
           >
             Continua
           </Button>
 
         </div>
       </form>
-
     </Box>
   );
 }

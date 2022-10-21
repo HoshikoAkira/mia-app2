@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/domande/:id" element={<TabDomande/>} />
         <Route exact path="/VediSondaggio/:id" element={<TabSondaggio/>} /> 
         <Route exact path="/Nuovo" element={<TabNuovo/>} /> 
-        <Route exact path="/InserisciDomande" element={<TabNuovaDomanda/>} />
+        <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} />
         
         
         
