@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import BasicSelect from './BasicSelect';
 import ResponsiveDatePickers from "./Date"
@@ -31,7 +31,9 @@ export default function VediSondaggio() {
     const [email, setEmail] = useState("");
     const [stato, setStato] = useState('');
 
-
+    const cambiaStato = (e) => {
+        setStato(e.target.value)
+      };
 
     useEffect(() => {
         // console.log('=====>'+ id);
@@ -101,7 +103,7 @@ export default function VediSondaggio() {
             .then(function (json) {
                 console.log(json);
             })
-            .then(navigate("/VediSondaggio/" + id)) //Funzione a cui navigare
+            .then(navigate(-1)) //Funzione a cui navigare
             .catch(function (err) {
                 console.log("errore fetch: " + err.message);
             })
@@ -174,17 +176,25 @@ export default function VediSondaggio() {
                         setEmail(e.target.value)
                     }}
                 />
-                {/* Prova basic select */}
-
                 <div>
-                    <BasicSelect valore={stato} onChange={(e) => {
-                        setStato(e)
-                    }
 
-                    } />
-
-                </div>
-
+             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="demo-simple-select-label">Stato</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="simple-select"
+                name="stato"
+                label="Stato"
+                defaultValue='bozza'
+                value={stato}
+                onChange={cambiaStato}
+              >
+                <MenuItem value={"aperto"} >Aperto</MenuItem>
+                <MenuItem value={"chiuso"}>Concluso</MenuItem>
+                <MenuItem value={"bozza"}>Bozza</MenuItem>
+              </Select>
+            </FormControl>
+            </div>
                 {/*-------------  Bottoni aggiorna ed elimina------------- */}
                 <div>
 

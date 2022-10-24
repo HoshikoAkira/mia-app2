@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage"
 import TabSondaggio from "./components/TabSondaggio"
 import TabNuovo from "./components/TabNuovo"
 import TabNuovaDomanda from "./components/TabNuovaDomanda"
+import TabModificaDomanda from "./components/tabModificaDomanda"
 // import Checkboxes from "./components/CheckBox"
 // import RadioButtonsGroup from "./components/RadioButton"
 // import BasicTextFields from "./components/RispostaLibera"
@@ -34,6 +35,8 @@ function App() {
         <Route exact path="/VediSondaggio/:id" element={<TabSondaggio/>} /> 
         <Route exact path="/Nuovo" element={<TabNuovo/>} /> 
         <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} />
+        <Route exact path="/ModificaDomanda/:id" element={<TabModificaDomanda/>} />
+
         
         
         

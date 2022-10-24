@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import Stack from '@mui/material/Stack';
-import NuovaDomanda from "./inserisciDomande"
+import ModificaDomanda from "./modificaDomanda"
 
 
 
@@ -58,7 +58,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           
-          <Tab label="Aggiungi domande" {...a11yProps(0)} />
+          <Tab label="Modofica Domanda" {...a11yProps(0)} />
 
         </Tabs>
       </Box>
@@ -66,7 +66,7 @@ export default function BasicTabs() {
 
         <Stack spacing={2} direction="row">
 
-          <NuovaDomanda />
+          <ModificaDomanda />
       
 
         </Stack>

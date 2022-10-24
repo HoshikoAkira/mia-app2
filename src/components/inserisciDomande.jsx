@@ -49,6 +49,9 @@ export default function InserisciDomande() {
     })
   }
 
+  
+
+
   // const PrendiIndice = (e) => {
   //   setDomanda((params) => {
   //     return {
@@ -160,9 +163,9 @@ export default function InserisciDomande() {
               name="tipologia"
               onChange={TipoDomanda}
             >
-              <FormControlLabel value="checkbox" control={<Radio size="small" />} label="CheckBox" sx={{ marginRight: "50px" }} />
-              <FormControlLabel value="radio" control={<Radio size="small" />} label="Radio Button" sx={{ marginRight: "50px" }} />
-              <FormControlLabel value="risposta libera" control={<Radio size="small" />} label="Testo libero" sx={{ marginRight: "50px" }} />
+              <FormControlLabel value="Checkbox" control={<Radio size="small" />} label="CheckBox" sx={{ marginRight: "50px" }} />
+              <FormControlLabel value="Radio" control={<Radio size="small" />} label="Radio Button" sx={{ marginRight: "50px" }} />
+              <FormControlLabel value="Risposta libera" control={<Radio size="small" />} label="Testo libero" sx={{ marginRight: "50px" }} />
             </RadioGroup>
           </FormControl>
 

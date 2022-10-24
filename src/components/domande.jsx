@@ -26,8 +26,27 @@ const BottoneElimina = (props) => {
                 return ((navigate("/sondaggi/" )));
               }}>Elimina
           </Button>
+
+            
       );
     };
+    const BottoneModifica = (props) => {
+        const navigate=useNavigate();
+    
+    
+          return (
+          
+              <Button
+                  variant="outlined" size="small"    onClick={() => {
+                    console.log(props.riga.id);
+                  
+                    return ((navigate("/modificaDomanda/"+ props.riga.id )));
+                  }}>Modifica
+              </Button>
+    
+                
+          );
+        };
 
 
    
@@ -64,6 +83,12 @@ export default function DataGridDemo() {
         {
             field: 'Elimina',
             renderCell: (e) => <BottoneElimina  riga={e.row}/>,
+            width:150
+        
+        },
+        {
+            field: 'Modifica',
+            renderCell: (e) => <BottoneModifica riga={e.row}/>,
             width:150
         
         }
