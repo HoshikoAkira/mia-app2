@@ -10,6 +10,7 @@ import { Button, Icon, IconButton } from '@mui/material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Delete } from '@mui/icons-material';
 
 
 
@@ -76,10 +77,12 @@ export default function InserisciDomande() {
   //Elimina risposta aggiunta
   const EliminaRisposta = (indice) => {
     console.log("indice: ", indice)
-    // let lista = [...listaRisposte];
-    // lista[indice]["risposta"] = "";
-    // setListaRisposte(lista);
-  }
+  let array = [...listaRisposte];
+  console.log("Elementi array", array)
+  //splice elimina la riga con indice 1 alla volta 
+  array.splice(indice,1);
+  setListaRisposte(array);
+   }
 
   const ClearRisposta = (indice) => {
     console.log("indice: ", indice)
@@ -87,10 +90,7 @@ export default function InserisciDomande() {
     lista[indice]["risposta"] = "";
     setListaRisposte(lista);
   }
-//Funzione reload pagina dopo inserimento sondaggio
-  function refreshPage() {
-    window.location.reload(false);
-  }
+
 
   //fetch finale (di tipo PATCH) --prendere anche l'ID del sondaggio appena creato
   const handleSubmit = (e) => {
@@ -112,9 +112,12 @@ export default function InserisciDomande() {
     .then(function (response) {
       //il DB risponde con un json (domanda appena creata)
       console.log(response);
+      setListaRisposte([{risposta:""}])
+      setDomanda({testo:""})
       return response.json()
+  
     })
-    .catch(function (err) {
+     .catch(function (err) {
       console.log("errore fetch: " + err.message);
     })
   };
@@ -200,7 +203,7 @@ export default function InserisciDomande() {
             variant="text"
             size="medium"
             sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "100px" }}
-            onClick={refreshPage}
+           
           >
             Conferma Domanda
           </Button>
@@ -241,7 +244,7 @@ export default function InserisciDomande() {
                         variant="text"
                         size="medium"
                          sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
-                        onClick={EliminaRisposta}
+                        onClick={(e)=>EliminaRisposta(indice)}
           >
             elimina risposta
           </Button>
