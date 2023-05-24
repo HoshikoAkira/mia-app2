@@ -73,6 +73,13 @@ export default function InserisciDomande() {
     lista[indice][e.target.name] = e.target.value;
     setListaRisposte(lista);
   }
+  //Elimina risposta aggiunta
+  const EliminaRisposta = (indice) => {
+    console.log("indice: ", indice)
+    // let lista = [...listaRisposte];
+    // lista[indice]["risposta"] = "";
+    // setListaRisposte(lista);
+  }
 
   const ClearRisposta = (indice) => {
     console.log("indice: ", indice)
@@ -80,8 +87,10 @@ export default function InserisciDomande() {
     lista[indice]["risposta"] = "";
     setListaRisposte(lista);
   }
-
-
+//Funzione reload pagina dopo inserimento sondaggio
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   //fetch finale (di tipo PATCH) --prendere anche l'ID del sondaggio appena creato
   const handleSubmit = (e) => {
@@ -184,12 +193,14 @@ export default function InserisciDomande() {
             Aggiungi risposta
           </Button>
 
+         
+
           <Button
             type='submit'
             variant="text"
             size="medium"
             sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "100px" }}
-
+            onClick={refreshPage}
           >
             Conferma Domanda
           </Button>
@@ -214,6 +225,7 @@ export default function InserisciDomande() {
                       maxRows={4}
                       variant="standard"
                       onChange={e => AggiungiRisposte(indice, e)}
+                      
 
                       InputProps={{
                         endAdornment: listaRisp.risposta? (
@@ -224,7 +236,17 @@ export default function InserisciDomande() {
                         ) : undefined
                       }}
                     />
+                     <Button
+                       type='button'
+                        variant="text"
+                        size="medium"
+                         sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}
+                        onClick={EliminaRisposta}
+          >
+            elimina risposta
+          </Button>
                   </div>
+                 
                 )
               })
             }
@@ -232,6 +254,9 @@ export default function InserisciDomande() {
         </Box>
       </form>
     </div>
+
+
+
 
   );
 }

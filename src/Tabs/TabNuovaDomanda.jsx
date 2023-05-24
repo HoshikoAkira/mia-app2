@@ -6,9 +6,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import Stack from '@mui/material/Stack';
+import NuovaDomanda from "../components/inserisciDomande"
 
 
-import VediSondaggio from "./VediSondaggio"
+
+
 
 
 function TabPanel(props) {
@@ -46,26 +48,27 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: '100%',marginTop:'80px' }}>
+    <Box sx={{ width: '100%', marginTop: '80px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Sondaggio" {...a11yProps(0)} />
-        
-        
+          
+          <Tab label="Aggiungi domande" {...a11yProps(0)} />
+
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
 
         <Stack spacing={2} direction="row">
-       
-        <VediSondaggio/>
+
+          <NuovaDomanda />
       
-      
+
         </Stack>
 
       </TabPanel>

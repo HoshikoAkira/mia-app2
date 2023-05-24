@@ -3,17 +3,17 @@ import React from "react";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./components/temaConfig"
 
-import TabPanel from "./components/tabs"
+import TabPanel from "./Tabs/tabs"
 import ButtonAppBar from "./components/navbar"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import TabDomande from "./components/TabDomande"
+import TabDomande from "./Tabs/TabDomande"
 import HomePage from "./components/HomePage"
-import TabSondaggio from "./components/TabSondaggio"
-import TabNuovo from "./components/TabNuovo"
-import TabNuovaDomanda from "./components/TabNuovaDomanda"
-import TabModificaDomanda from "./components/tabModificaDomanda"
+import TabSondaggio from "./Tabs/TabSondaggio"
+import TabNuovo from "./Tabs/TabNuovo"
+import TabNuovaDomanda from "./Tabs/TabNuovaDomanda"
+import TabModificaDomanda from "./Tabs/tabModificaDomanda"
 // import Checkboxes from "./components/CheckBox"
 // import RadioButtonsGroup from "./components/RadioButton"
 // import BasicTextFields from "./components/RispostaLibera"
